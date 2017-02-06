@@ -1,4 +1,7 @@
-﻿using System;
+﻿//David Gipe    
+//CIS237
+//Assignment 2
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,6 +24,7 @@ namespace cis237assignment2
             /// </summary>
             const int X_START = 1;
             const int Y_START = 1;
+            Console.BufferHeight = 5000;
 
             ///<summary>
             /// The first maze that needs to be solved.
@@ -52,6 +56,8 @@ namespace cis237assignment2
             /// <summary>
             /// Tell the instance to solve the first maze with the passed maze, and start coordinates.
             /// </summary>
+            
+            //Solve origonal defined maze
             mazeSolver.SolveMaze(maze1, X_START, Y_START);
 
             //Solve the transposed maze.
@@ -75,10 +81,22 @@ namespace cis237assignment2
         /// </summary>
         /// <param name="mazeToTranspose"></param>
         /// <returns>transposedMaze</returns>
+        /// 
+
+        //Create new maze
         static char[,] transposeMaze(char[,] mazeToTranspose)
         {
-            //Write code her to create a transposed maze.
-            return new char[1, 1];
+            char[,] transposedMaze = new char[12, 12];
+
+            for (int i = 0; i < 12; i++)
+            {
+                for (int o = 0; o < 12; o++)
+                {
+                    transposedMaze[i, o] = mazeToTranspose[o, i];
+                }
+            }
+
+            return transposedMaze;
         }
     }
 }

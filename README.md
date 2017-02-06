@@ -1,7 +1,9 @@
-# Assignment 2 - Recursion to solve a maze
+﻿# Assignment 2 - Recursion to solve a maze
 ## Due 02-08-2017
 
 ## Author
+
+David Gipe
 
 ## Description
 
@@ -42,4 +44,8 @@ Don't forget that you must have a base case for your recursive method or you wil
 
 ## Outside Resources Used
 
+http://stackoverflow.com/questions/29483660/how-to-transpose-matrix
+
 ## Known Problems, Issues, And/Or Errors in the Program
+
+None

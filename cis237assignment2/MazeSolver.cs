@@ -1,7 +1,4 @@
-﻿//David Gipe    
-//CIS237
-//Assignment 2
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +20,7 @@ namespace cis237assignment2
         char[,] maze;
         int xStart;
         int yStart;
+        bool fin;
 
         /// <summary>
         /// Default Constuctor to setup a new maze solver.
@@ -44,6 +42,10 @@ namespace cis237assignment2
             this.maze = maze;
             this.xStart = xStart;
             this.yStart = yStart;
+            //Maze not complete
+            fin = false;
+            //Start@
+            this.maze[1, 1] = 'X';
 
             //Do work needed to use mazeTraversal recursive call and solve the maze.
         }
@@ -57,6 +59,21 @@ namespace cis237assignment2
         private void mazeTraversal()
         {
             //Implement maze traversal recursive call
+        }
+
+
+        //Print the current state
+        private void Print(char[,] maze)
+        {
+            for (int i = 0; i <= 11; i++)
+            {
+                for (int o = 0; o <= 11; o++)
+                {
+                    Console.Write(maze[i, o]);
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
         }
     }
 }

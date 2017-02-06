@@ -47,7 +47,15 @@ namespace cis237assignment2
             //Start@
             this.maze[1, 1] = 'X';
 
-            //Do work needed to use mazeTraversal recursive call and solve the maze.
+            Print(this.maze);
+
+            Console.WriteLine("Current state of the Maze. Press any key to solve.");
+            Console.ReadKey();
+
+            mazeTraversal(this.maze, this.xStart, this.yStart);
+            Console.WriteLine("The maze is solved, press any key to continue.");
+            Console.ReadKey();
+
         }
 
 
@@ -56,7 +64,7 @@ namespace cis237assignment2
         /// Feel free to change the return type if you like, or pass in parameters that you might need.
         /// This is only a very small starting point.
         /// </summary>
-        private void mazeTraversal()
+        private void mazeTraversal(char[,] maze, int xPos, int yPos)
         {
             //Implement maze traversal recursive call
         }

@@ -42,9 +42,10 @@ namespace cis237assignment2
             this.maze = maze;
             this.xStart = xStart;
             this.yStart = yStart;
+
             //Maze not complete
             fin = false;
-            //Start@
+            //Start at
             this.maze[1, 1] = 'X';
 
             Print(this.maze);
@@ -53,7 +54,8 @@ namespace cis237assignment2
             Console.ReadKey();
 
             mazeTraversal(this.maze, this.xStart, this.yStart);
-            Console.WriteLine("The maze is solved, press any key to continue.");
+            Console.WriteLine("Complete!  Press any key to continue.");
+            Console.WriteLine();
             Console.ReadKey();
 
         }
@@ -66,7 +68,49 @@ namespace cis237assignment2
         /// </summary>
         private void mazeTraversal(char[,] maze, int xPos, int yPos)
         {
-            //Implement maze traversal recursive call
+            
+            //Check if edge of maze has been reached
+            if (xPos == 0 | yPos == 0 | yPos == 11 | xPos == 11)
+            {
+                maze[xPos, yPos] = 'X';
+                fin = true;
+                return;
+            }
+            //if it can go left
+            if (maze[xPos - 1, yPos] == '.' & !fin)
+            {
+                maze[xPos - 1, yPos] = 'X';
+                Print(maze);
+                mazeTraversal(maze, xPos - 1, yPos);
+            }
+            //if it can go down
+            if (maze[xPos, yPos + 1] == '.' & !fin)
+            {
+                maze[xPos, yPos + 1] = 'X';
+                Print(maze);
+                mazeTraversal(maze, xPos, yPos + 1);
+            }
+            //if it can go right
+            if (maze[xPos + 1, yPos] == '.' & !fin)
+            {
+                maze[xPos + 1, yPos] = 'X';
+                Print(maze);
+                mazeTraversal(maze, xPos + 1, yPos);
+            }
+
+            //if it can go up
+            if (maze[xPos, yPos - 1] == '.' & !fin)
+            {
+                maze[xPos, yPos - 1] = 'X';
+                Print(maze);
+                mazeTraversal(maze, xPos, yPos - 1);
+            }
+            //Fail to find the exit and reach a dead end          
+            if (!fin)
+            {
+                maze[xPos, yPos] = 'O';
+                Print(maze);
+            }
         }
 
 

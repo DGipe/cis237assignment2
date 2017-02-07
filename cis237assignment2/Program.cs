@@ -90,9 +90,9 @@ namespace cis237assignment2
 
             for (int i = 0; i < 12; i++)
             {
-                for (int o = 0; o < 12; o++)
+                for (int j = 0; j < 12; j++)
                 {
-                    transposedMaze[i, o] = mazeToTranspose[o, i];
+                    transposedMaze[i, j] = mazeToTranspose[j, i];
                 }
             }
 

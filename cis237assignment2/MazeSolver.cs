@@ -87,12 +87,13 @@ namespace cis237assignment2
                 fin = true;
                 return;
             }
-            //Check left (-X)
-            if (maze[xPos - 1, yPos] == '.' & !fin)
+
+            //Check Down (+Y Because Y goes up as you go down. This one threw me for a bit)
+            if (maze[xPos, yPos + 1] == '.' & !fin)
             {
-                maze[xPos - 1, yPos] = 'X';
+                maze[xPos, yPos + 1] = 'X';
                 Print(maze);
-                mazeTraversal(maze, xPos - 1, yPos);
+                mazeTraversal(maze, xPos, yPos + 1);
             }
 
             //Check Right (+X)
@@ -103,20 +104,20 @@ namespace cis237assignment2
                 mazeTraversal(maze, xPos + 1, yPos);
             }
 
-            //Check Up (-Y (Because Y goes up as you go down. This one threw me for a bit)
+            //Check left (-X)
+            if (maze[xPos - 1, yPos] == '.' & !fin)
+            {
+                maze[xPos - 1, yPos] = 'X';
+                Print(maze);
+                mazeTraversal(maze, xPos - 1, yPos);
+            }
+
+            //Check Up (-Y)
             if (maze[xPos, yPos - 1] == '.' & !fin)
             {
                 maze[xPos, yPos - 1] = 'X';
                 Print(maze);
                 mazeTraversal(maze, xPos, yPos - 1);
-            }
-           
-            //Check Down (+Y)
-            if (maze[xPos, yPos + 1] == '.' & !fin)
-            {
-                maze[xPos, yPos + 1] = 'X';
-                Print(maze);
-                mazeTraversal(maze, xPos, yPos + 1);
             }
             //Reaches a deadend         
             if (!fin)

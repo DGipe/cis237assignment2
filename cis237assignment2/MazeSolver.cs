@@ -1,4 +1,7 @@
-﻿using System;
+﻿//David Gipe    
+//CIS237
+//Assignment 2
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -48,13 +51,21 @@ namespace cis237assignment2
             //Start at
             this.maze[1, 1] = 'X';
 
+            Console.WriteLine("Current state of the Maze:");
+            Console.WriteLine();
             Print(this.maze);
+            Console.WriteLine("Press any key to solve.");
 
-            Console.WriteLine("Current state of the Maze. Press any key to solve.");
             Console.ReadKey();
 
             mazeTraversal(this.maze, this.xStart, this.yStart);
-            Console.WriteLine("Complete!  Press any key to continue.");
+            Console.WriteLine("Complete! Solved maze is below. Press any key to continue.");
+            Console.WriteLine();
+            Console.WriteLine("***************");
+            Console.WriteLine();
+            Print(maze);
+            Console.WriteLine();
+            Console.WriteLine("***************");
             Console.WriteLine();
             Console.ReadKey();
 
@@ -69,28 +80,22 @@ namespace cis237assignment2
         private void mazeTraversal(char[,] maze, int xPos, int yPos)
         {
             
-            //Check if edge of maze has been reached
+            //Set and check if it has reached any of the limits
             if (xPos == 0 | yPos == 0 | yPos == 11 | xPos == 11)
             {
                 maze[xPos, yPos] = 'X';
                 fin = true;
                 return;
             }
-            //if it can go left
+            //Check left (-X)
             if (maze[xPos - 1, yPos] == '.' & !fin)
             {
                 maze[xPos - 1, yPos] = 'X';
                 Print(maze);
                 mazeTraversal(maze, xPos - 1, yPos);
             }
-            //if it can go down
-            if (maze[xPos, yPos + 1] == '.' & !fin)
-            {
-                maze[xPos, yPos + 1] = 'X';
-                Print(maze);
-                mazeTraversal(maze, xPos, yPos + 1);
-            }
-            //if it can go right
+
+            //Check Right (+X)
             if (maze[xPos + 1, yPos] == '.' & !fin)
             {
                 maze[xPos + 1, yPos] = 'X';
@@ -98,14 +103,22 @@ namespace cis237assignment2
                 mazeTraversal(maze, xPos + 1, yPos);
             }
 
-            //if it can go up
+            //Check Up (-Y (Because Y goes up as you go down. This one threw me for a bit)
             if (maze[xPos, yPos - 1] == '.' & !fin)
             {
                 maze[xPos, yPos - 1] = 'X';
                 Print(maze);
                 mazeTraversal(maze, xPos, yPos - 1);
             }
-            //Fail to find the exit and reach a dead end          
+           
+            //Check Down (+Y)
+            if (maze[xPos, yPos + 1] == '.' & !fin)
+            {
+                maze[xPos, yPos + 1] = 'X';
+                Print(maze);
+                mazeTraversal(maze, xPos, yPos + 1);
+            }
+            //Reaches a deadend         
             if (!fin)
             {
                 maze[xPos, yPos] = 'O';
@@ -119,9 +132,9 @@ namespace cis237assignment2
         {
             for (int i = 0; i <= 11; i++)
             {
-                for (int o = 0; o <= 11; o++)
+                for (int j = 0; j <= 11; j++)
                 {
-                    Console.Write(maze[i, o]);
+                    Console.Write(maze[i, j]);
                 }
                 Console.WriteLine();
             }
